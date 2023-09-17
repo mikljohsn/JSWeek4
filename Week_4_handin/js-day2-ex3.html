@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Week 4 hand-in</title>
+</head>
+
+<body style="font-family: sans-serif;">
+    <h2>Exercise 3</h2>
+    <ul id="unordered-list"></ul>
+    <form>
+        <input id="name-input" placeholder="Name">
+        <button id="add-Name">Add name</button>
+        <button id="remove-first">Remove first</button>
+        <button id="remove-last">Remove last</button>
+    </form>
+    <div style="margin: 1em 0;">
+    </div>
+    <h3>Reflections</h3>
+    <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+        <ul>
+            <li> I used the preventDefault() method to on each of my button functions to stop the default behavior from happening which is to load the page from the server again</li>
+            <li>Without proper validation, using innerHTML opens up your submits to user generated JavaScript code which can compromise the security of the program</li>
+            <li>I changed all of my DOM-elements and loaded them again, because it is simpler to code and despite it being performance heavy to load everything again instead
+                loading everything individually, and creates security problems, it shouldn't be a problem for modern computers to handle such small loads.
+            </li>
+        </ul>
+    </div>
+    <a href="/">back</a>
+</body>
+
+<script>
+    const names = ["John","Makker","Lise", "Hans", "Lars"]
+    function createList(){
+        document.getElementById("unordered-list").innerHTML = names.map(name => `<li>${name}</li>`).join(""); //taken from previous project
+    }
+
+createList();
+
+document.querySelector("#add-Name").onclick = (event) => {
+    event.preventDefault();
+    const addName = document.querySelector("#name-input").value;
+    names.push(addName);
+    createList();
+}
+document.querySelector("#remove-first").onclick = (event) => {
+    event.preventDefault();
+    names.shift();
+    createList();
+}
+document.querySelector("#remove-last").onclick = (event) =>{
+    event.preventDefault();
+    names.pop();
+    createList();
+}
+
+</script>
+
+</html>    

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 hand-in</title>
+    <style>
+        .my-div {width: 25px; height: 25px;background-color:red; margin:1px;}
+    </style> 
+</head>
+<body>
+    <p>Exercise 2</p>
+    <div id="outer">
+        <div id="div1" class="my-div"></div>
+        <div id="div2" class="my-div"></div>
+        <div id="div3" class="my-div"></div>
+        <div id="div4" class="my-div"></div>
+        <div id="div5" class="my-div"></div>
+        <div id="div6" class="my-div"></div>
+        <div id="div7" class="my-div"></div>
+        <div id="div8" class="my-div"></div>
+        <div id="div9" class="my-div"></div>
+        <div id="div10" class="my-div"></div>
+        <div id="div11" class="my-div"></div>
+        <div id="div12" class="my-div"></div>
+    </div>
+    <p id="div-text"></p>
+    <h3>Reflections</h3>
+        <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+        In this exercise i used bubbling to handle the events in my divs. I created an onclick function that printed the id and used it on the outer div.
+        When a div is clicked the function takes the event.target, where the target is the element clicked. The handler then "bubbles" outward from the innermost nested target
+        and applies the function logic to it.
+        </div>
+    <a href="/">back</a>
+    <script>
+        /*outer.onclick = function(event) { //takes the div id and builds an anonymous function using the "target" bubbling function. Target is thet most deeply nested element
+            const divId = event.target.id;
+            console.log("hi from " + divId);
+            document.querySelector("#div-text").innerText = "Hello from " + divId;
+        }*/
+        const bubble = document.querySelector("#outer") //uses addEventListener
+        bubble.addEventListener("click", function (event) {
+            const id = event.target.id
+            document.querySelector("#div-text").innerText = "Hi from " + id;
+        },false);
+
+        /*document.querySelector("#outer").onclick = (event) =>{ //uses querySelecter to find the item and then creates an onclick function 
+            const divId = event.target.id;
+            console.log("hi from " + divId);
+        }*/
+
+    
+    </script>  
+</body>
+</html>

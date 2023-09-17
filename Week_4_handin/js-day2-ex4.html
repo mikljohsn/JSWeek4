@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 4 hand-in</title>
+</head>
+<body>
+    <p>Exercise 4</p>
+    <select id="car-selector">
+        <!-- Options will be populated by JavaScript -->
+      </select>
+      <h2>Selected Brand</h2>
+      <p id="car-make"></p>
+      <h3>Reflections</h3>
+      <div style="border: 1px solid black; border-radius: 5px;padding: 1em;">
+        I would use a select-element for options where there are a set number of options and not variable. For something like countries it can be used, even though
+        it is a lot of options, i would still use it for such. But that would be the maximum number of options i would use a select for.
+        In this exercise i created a loop over my cars array and made an arrow function that appended each car to my car selector as a new option. I then made an event listener
+        where i took the value of the selected car and put it into a paragrah using the "change" keyword.
+    </div>
+    <a href="/">back</a>
+      
+      <script>
+      const cars = ["Ford", "WW", "Toyota", "Volvo"]; //Assume this was fechedfrom the backend
+      
+      cars.forEach(car => document.querySelector("#car-selector").appendChild(new Option(car))); //asked chatGPT for advice how to populate a select with JS
+      
+      const carMake = document.querySelector("#car-make");
+      const carSelector = document.querySelector("#car-selector");
+      carSelector.addEventListener("change", function(){
+        carMake.textContent = carSelector.value;
+      })
+      </script>
+      
+    
+</body>
+</html>

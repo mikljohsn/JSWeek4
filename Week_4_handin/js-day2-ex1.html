@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exercise 1</h1>
+
+<div id="d1" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d2" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="d3" style="width: 100px;margin: 1px;">&nbsp;</div>
+<button id="btn">Change colour</button>
+
+<h3>Reflections</h3>
+<p>In this solution i selected all my divs and interated through them and set the color to red.
+    I then made a function to change the color of the divs by the index and then added the event listener to the button, to run the function.
+</p>
+<a  href="/">back</a>
+
+<script>
+    const divs = document.querySelectorAll("div");
+    for(i = 0; i<divs.length; i++){
+        divs[i].style.backgroundColor = "red";
+    }
+
+    //anonymous querySelector function solution
+
+    /*document.querySelector("#btn").onclick = () =>{
+        divs[0].style.backgroundColor = "blue";
+        divs[1].style.backgroundColor = "green";
+        divs[2].style.backgroundColor = "yellow"; 
+    }*/
+
+    //eventListener solution
+    var button = document.getElementById("btn");
+    button.addEventListener("click",changeColor);
+
+    function changeColor(){
+        divs[0].style.backgroundColor = "blue";
+        divs[1].style.backgroundColor = "green";
+        divs[2].style.backgroundColor = "yellow"; 
+    }
+</script>
+    
+</body>
+</html>
