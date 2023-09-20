@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> 
+    <title>Document</title>
+</head>
+<body>
+    <input id="input-field">
+    <button id="btn-one">Get user</button>
+    <button id="btn-all">Get All</button>
+    <div id="data">
+        <ul id="ul" style="list-style-type: none" ></ul>
+        <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+          <tbody id="tbody">
+          </tbody>
+          </table>
+        </div>
+        
+    </div>
+    
+
+<script>
+const btnOne = document.querySelector("#btn-one")
+const  url = "https://jsonplaceholder.typicode.com/users/";
+
+btnOne.addEventListener("click",function() {
+    const inputField = document.querySelector("#input-field").value //needs to be inside the eventlistener, so it takes the input value when clicked and not when the page loads
+        fetch(url + inputField) //fetch all objects script
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Call response.json() to parse the JSON data
+  })
+  .then(user => {
+    const markup = `
+    <li>Name: ${user.name}</li>
+    <p></p> <!-- empty p for spacing -->
+    <li>Address:</li>
+    <ul style="list-style-type: none">
+      <li>Street: ${user.address.street}</li>
+      <li>City: ${user.address.city}</li>
+      <li>Zip: ${user.address.zip}</li>
+    </ul>
+    <li>Phone: ${user.phone}</li>
+    <li>Email: ${user.email}</li>
+    <li>Company: ${user.company.name}</li>
+    <p></p> <!-- empty p for next object -->
+    `;
+
+    document.querySelector("#ul").innerHTML = markup;
+  })
+  .catch(error => {
+    console.log(error);
+  })});
+
+
+const btnAll = document.querySelector("#btn-all")
+
+btnAll.addEventListener("click", function() {
+        fetch(url) //fetch all objects script
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Call response.json() to parse the JSON data
+  })
+  .then(data => { //create table instead of a list as per exercise 2
+    const markup = data.map(user => `
+    <tr>
+        <td>${user.name}</td>
+        <td>${user.phone}</td>
+    </tr>
+    `).join("\n");
+
+    document.querySelector("#tbody").innerHTML = markup;
+  })
+  .catch(error => {
+    console.log(error);
+  })});
+</script>
+</body>
+</html>
