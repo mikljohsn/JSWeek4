@@ -65,3 +65,53 @@ function addCar(){
     })
 }
 
+//edit item
+document.querySelector("#find-item").addEventListener("click", findEditCar);
+document.querySelector("#submit-edit").addEventListener("click", editCar);
+
+let carIdToEdit = null;
+
+function findEditCar(){
+  const id = document.querySelector("#text-for-id2").value;
+  fetch(server_url + "/" + id)
+    .then(response => {
+      if (!response.ok) {
+        return alert("Car Not Found");
+      }
+      return response.json();
+    })
+    .then(car => {
+      document.querySelector("#found-edit").innerText = JSON.stringify(car, null, 2);
+      carIdToEdit = car.id;
+    });
+    
+}
+
+function editCar(){
+  const id = document.querySelector("#text-for-id2").value; //not used here
+  const form = document.querySelector("#editForm"); //not used here
+
+  if (carIdToEdit === null) {
+    return alert("No car selected for editing");
+  }
+
+  const editedCar = {
+    id: carIdToEdit,
+    brand: document.querySelector("#brand-edit").value,
+    model: document.querySelector("#model-edit").value,
+    pricePrDay: parseFloat(document.querySelector("#pricePrDay-edit").value),
+    bestDiscount: parseInt(document.querySelector("#bestDiscount-edit").value),
+  };
+  const options = {
+    method: "PUT",
+    headers: {"content-type":"application/json"},
+    body: JSON.stringify(editedCar)
+  }
+  fetch(server_url + "/" + carIdToEdit, options)
+    .then(response => response.json())
+    .then(carResponse => {
+      document.querySelector("#new-car-response").innerText = JSON.stringify(carResponse, null, 3);
+    });
+    carIdToEdit = null;
+}
+

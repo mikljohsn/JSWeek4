@@ -89,10 +89,27 @@
         <div class="col">
           <h3>Edit a Car or a Member</h3>
           <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2" />
-          <button>Find item to edit</button>
-          <p>Show what you find here, and let users edit fields</p>
-          <p>......</p>
-          <button>Submit edited item</button>
+          <button id="find-item">Find item to edit</button>
+          <p id="found-edit">Show what you find here, and let users edit fields</p>
+          <form id="editForm">
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand:</label>
+                <input type="text" class="form-control" id="brand-edit" name="brand" required>
+            </div>
+            <div class="mb-3">
+                <label for="model" class="form-label">Model:</label>
+                <input type="text" class="form-control" id="model-edit" name="model" required>
+            </div>
+            <div class="mb-3">
+                <label for="pricePrDay" class="form-label">Price Per Day:</label>
+                <input type="number" step="0.01" class="form-control" id="pricePrDay-edit" name="pricePrDay" required>
+            </div>
+            <div class="mb-3">
+                <label for="bestDiscount" class="form-label">Best Discount (%):</label>
+                <input type="number" class="form-control" id="bestDiscount-edit" name="bestDiscount" required>
+            </div>
+            </form>
+          <button id="submit-edit">Submit edited item</button>
           <p>Use one of the two GET pages to verify that "something" was added</p>
         </div>
       </div>
