@@ -5,6 +5,10 @@ import {initAllCars} from "./pages/allCars/allCars.js"
 
 import  {initFindCar} from "./pages/findCar/findCar.js"
 
+import { initAddCar } from "./pages/addCar/addCar.js"
+
+import { initEditCar } from "./pages/editCar/editCar.js"
+
 window.addEventListener("load", async () => {
     const templateAbout = await loadHtml("./pages/about.html")
     const templateAdd = await loadHtml("./pages/addCar/addCar.html")
@@ -35,11 +39,11 @@ window.addEventListener("load", async () => {
         }
         if (target.id === "menu-btn-add") {
             renderHtml(templateAdd, "content")
-            //Run JS
+            initAddCar();
         }
         if (target.id === "menu-btn-edit") {
             renderHtml(templateEdit, "content")
-            //Run JS
+            initEditCar();
         }
     }
 })

@@ -14,16 +14,30 @@
 </head>
 
 <body>
+  <a  href="/">back</a>
+  <div>
+    <ul>
+      <li>The div in which we manipulate the pages</li>
+      <li>Modules are used to break the code down in small, reusable pieces and are imported/exported between the JS scripts</li>
+      <li>We have to make sure the DOM is built and ready to receive the data from the JS scripts</li>
+      <li>When you share a module across scripts it is the same module throught the applications lifetime</li>
+      <li>Using async/await makes the code easier to follow, read and work with. It also makes error handling easier, as you can use try/catch blocks around the code.</li>
+      <li>In this solution it is used whenever we try to fetch something from our api, by telling the function to fetch it whenever the response and data is ready. This is marked
+        by using the async keyword on our function and the await keyword on our fetch.
+      </li>
+      <li>I don't remember how to access error messages from the backend. Please elaborate</li>
+    </ul>
+  </div>
   <div style="margin-left: 10%;width: 75%;margin-right: auto">
     <h2>ES-6 Modules,no Router</h2>
     <div id="btns" style="margin-bottom: 1em;">
-      <button class="btn btn-dark" id="menu-btn-about">About</button>
+      <!--<button class="btn btn-dark" id="menu-btn-about">About</button>-->
       <button id="menu-btn-all" class="btn btn-dark">All Cars</button>
       <button id="menu-btn-find" class="btn btn-dark">Find Car</button>
       <button id="menu-btn-add" class="btn btn-dark">Add Car</button>
       <button id="menu-btn-edit" class="btn btn-dark">Edit Car</button>
     </div>
-    <div id="content" />
+    <div id="content"/>
 
 </body>
 

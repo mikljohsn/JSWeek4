@@ -40,6 +40,8 @@ function getACar(){
         document.querySelector("#found-car").innerText = JSON.stringify(car, null, 2)
     })
 };
+
+
 //add item
 document.querySelector("#add-car").addEventListener("click", addCar);
 
